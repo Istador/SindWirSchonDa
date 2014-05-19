@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+
+    <GridLayout
+        android:rowCount="2"
+        android:columnCount="2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+    >
+
+        <TextView
+            android:layout_gravity="center_vertical"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:paddingLeft="5dp"
+            />
+
+        <Button
+            style="?android:attr/buttonStyleSmall"
+            android:layout_gravity="fill"
+            android:text="@string/points"
+            android:enabled="false"
+            />
+
+        <EditText
+            android:layout_gravity="fill_horizontal"
+            android:ems="10"
+            android:inputType="numberDecimal"
+            />
+
+        <Spinner
+            android:layout_gravity="fill"
+            />
+        
+    </GridLayout>
+
+</merge>

@@ -1,0 +1,68 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:si="http://schemas.android.com/apk/res/de.blackpinguin.android.sindwirschonda"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/aCalcDistance"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".CalcDistanceActivity" >
+
+    <de.blackpinguin.android.sindwirschonda.views.SIValueInput
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        si:label="@string/Speed"
+        si:value="1.0"
+        si:backgroundColor="#FCC"
+        si:unit="speed"
+        si:unitIndex="2"
+    />
+    
+
+    <Space
+        android:layout_width="fill_parent"
+        android:layout_height="20dp"
+        />
+    
+    <de.blackpinguin.android.sindwirschonda.views.SIValueInput
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        si:label="@string/Time"
+        si:value="2.0"
+        si:backgroundColor="#FCF"
+        si:unit="time"
+        si:unitIndex="0"
+    />
+    
+    <Space
+        android:layout_width="fill_parent"
+        android:layout_height="20dp"
+        />
+    
+    <View
+    	android:layout_width="fill_parent"
+    	android:layout_height="2dp"
+    	android:background="@android:color/darker_gray"
+	    android:paddingBottom="5dp"
+	    android:paddingTop="5dp"
+	    />
+    
+    <Space
+        android:layout_width="fill_parent"
+        android:layout_height="20dp"
+        />
+    
+    <de.blackpinguin.android.sindwirschonda.views.SIValueOutput
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        si:label="@string/Distance"
+        si:value="2.0"
+        si:backgroundColor="#CFC"
+        si:unit="distance"
+        si:unitIndex="1"
+    />
+
+</LinearLayout>

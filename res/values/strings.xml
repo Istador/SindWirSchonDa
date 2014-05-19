@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Are we there yet?</string>
+    <string name="calcTime">How long?</string>
+    <string name="calcDistance">How far?</string>
+    <string name="calcSpeed">How fast?</string>
+    <string name="Speed">Speed</string>
+    <string name="Time">Time</string>
+    <string name="Distance">Distance</string>
+    <string name="points">&#8230;</string>
+
+</resources>
