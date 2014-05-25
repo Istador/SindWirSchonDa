@@ -14,13 +14,24 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="de.blackpinguin.android.sindwirschonda.MainActivity"
+            android:name="de.blackpinguin.android.sindwirschonda.activities.MainActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity
+            android:name="de.blackpinguin.android.sindwirschonda.activities.CalcTimeActivity"
+            android:label="@string/calcTime" >
+        </activity>
+        <activity
+            android:name="de.blackpinguin.android.sindwirschonda.activities.CalcDistanceActivity"
+            android:label="@string/calcDistance" >
+        </activity>
+        <activity
+            android:name="de.blackpinguin.android.sindwirschonda.activities.CalcSpeedActivity"
+            android:label="@string/calcSpeed" >
         </activity>
     </application>
 

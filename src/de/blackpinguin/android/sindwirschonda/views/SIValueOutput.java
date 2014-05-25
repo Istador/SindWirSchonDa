@@ -16,12 +16,8 @@ import android.widget.GridLayout;
 import android.widget.Spinner;
 import android.widget.TextView;
 
-import de.blackpinguin.android.sdt.R;
-import de.blackpinguin.android.sdt.si.SIDistance;
-import de.blackpinguin.android.sdt.si.SISpeed;
-import de.blackpinguin.android.sdt.si.SITime;
-import de.blackpinguin.android.sdt.si.SIUnit;
-import de.blackpinguin.android.sdt.si.SIValue;
+import de.blackpinguin.android.sindwirschonda.R;
+import de.blackpinguin.android.sindwirschonda.si.*;
 
 public class SIValueOutput extends FrameLayout {
 	
