@@ -11,24 +11,26 @@
     >
         
         <TextView
-            android:layout_gravity="center_vertical"
+            android:layout_gravity="fill"
+            android:gravity="center_vertical"
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:paddingLeft="5dp"
             />
 
         <Space
-        	android:layout_gravity="fill"
+        	android:layout_gravity="fill_vertical"
+            android:layout_width="100dp"
         	/>
 
         <EditText
-            android:layout_gravity="fill_horizontal"
-            android:ems="10"
+            android:layout_gravity="fill"
             android:inputType="numberDecimal"
             android:enabled="false"
             />
 
         <Spinner
-            android:layout_gravity="fill"
+            android:layout_gravity="fill_vertical"
+            android:layout_width="100dp"
             />
         
     </GridLayout>

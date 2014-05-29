@@ -11,36 +11,18 @@ import android.view.View.OnClickListener
 import android.widget.Button
 import android.view.ViewGroup
 
-class MainActivity extends Activity {
+class MainActivity extends ButtonsActivity {
   
-  val classes = Array( 
-      classOf[CalcTimeActivity],
-      classOf[CalcDistanceActivity],
-      classOf[CalcSpeedActivity]
+  override def viewHomeAsBack = false
+  
+  def getCallbacks = Array[E](
+      Right(classOf[CalcTimeActivity]),
+      Right(classOf[CalcDistanceActivity]),
+      Right(classOf[CalcSpeedActivity])
   )
   
-  case class MainClick(index: Int) extends OnClickListener {
-    override def onClick(v: View) = {
-      val i = new Intent(MainActivity.this, classes(index))
-      startActivity(i)
-    }
-  }
-  
-  override def onCreate(savedInstanceState: Bundle) = {
-    super.onCreate(savedInstanceState)
-    setContentView(R.layout.activity_main)
-    val main = findViewById(R.id.aMain).asInstanceOf[ViewGroup]
-    
-    for{
-      i <- 0 until main.getChildCount
-      child = main.getChildAt(i)
-      if child.isInstanceOf[Button]
-      button = child.asInstanceOf[Button]
-    }{
-      button.setOnClickListener(MainClick(i))
-    }
-    
-  }
-  
+  def getLayoutID = R.layout.activity_main
+  def getMenuID = R.menu.main
+  def getContentID = R.id.aMain
   
 }
