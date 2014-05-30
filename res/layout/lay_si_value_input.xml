@@ -22,7 +22,6 @@
             android:layout_gravity="fill_vertical"
             android:layout_width="100dp"
             android:text="@string/points"
-            android:enabled="false"
             />
 
         <EditText

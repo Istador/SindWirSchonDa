@@ -2,7 +2,7 @@ package de.blackpinguin.android.sindwirschonda.si
 
 //Begleitobjekt ("static")
 object SIUnit {
-  
+    
   object NotAUnit extends SIUnit ("NaU", Double.NaN){
     def getBaseUnit = this
     def *(other: SIUnit) = this
