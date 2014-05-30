@@ -1,27 +1,24 @@
 package de.blackpinguin.android.sindwirschonda.si
 
+import de.blackpinguin.android.sindwirschonda.R
+
 //Begleitobjekt
-object SISpeed {
+object SISpeed extends SIUnitType[SISpeed] {
   
-  private var cache: Map[String, SIUnit] = Map() 
-  def apply(abbr: String) = cache.getOrElse(abbr, SIUnit.NaU)
+  def nameID = R.string.Speed
+  def arrayID = R.array.speed
   
-  val km_per_h = new SISpeed("km/h", 1000.0 / (60.0*60.0))
-  val kn = new SISpeed("kn", 463.0 / 900.0)
-  val m_per_s = new SISpeed("m/s", 1.0)
-  val km_per_s = new SISpeed("km/s", 1000.0)
+  val km_per_h = SISpeed(0, 1000.0 / 3600.0)
+  val mph      = SISpeed(1, 0.44704)
+  val kn       = SISpeed(2, 463.0 / 900.0)
+  val m_per_s  = SISpeed(3, 1.0)
+  val km_per_s = SISpeed(4, 1000.0)
   
 }
 
 //Klasse
-case class SISpeed private(_abbr: String, _bum: Double)
-  extends SIUnit(_abbr, _bum) {
-  
-  //Teil der Konstruktormethode
-  SISpeed.cache += abbreviation -> this
-  
-  def getBaseUnit = SISpeed.m_per_s
-  
+case class SISpeed private(_abbr: String, _bum: Double) extends SIUnit(_abbr, _bum) {
+    
   def *(other: SIUnit) = other match {
     case _: SITime => SIDistance.m
     case _ => SIUnit.NaU

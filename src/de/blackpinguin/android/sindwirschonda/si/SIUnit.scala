@@ -4,7 +4,7 @@ package de.blackpinguin.android.sindwirschonda.si
 object SIUnit {
     
   object NotAUnit extends SIUnit ("NaU", Double.NaN){
-    def getBaseUnit = this
+    override def getBaseUnit = this
     def *(other: SIUnit) = this
     def /(other: SIUnit) = this
   }
@@ -15,7 +15,18 @@ object SIUnit {
 //Klasse
 abstract class SIUnit(val abbreviation: String, val baseUnitMultiplier: Double) {
   
-  def getBaseUnit: SIUnit
+  //das konkrete Begleitobjekt der konkreten Klasse
+  lazy val unitType = {
+    //yay, reflection!
+    val c = Class.forName(getClass.getName() + "$")
+    c.getField("MODULE$").get(c).asInstanceOf[SIUnitType[_]]
+  }
+  
+  //Teil der Konstruktormethode: füge die Einheit dem Einheitentyp hinzu
+  if(!abbreviation.equals("NaU"))
+    unitType += this
+  
+  def getBaseUnit: SIUnit = unitType.baseUnit
   def *(other: SIUnit): SIUnit
   def /(other: SIUnit): SIUnit
   
@@ -25,5 +36,4 @@ abstract class SIUnit(val abbreviation: String, val baseUnitMultiplier: Double) 
   def toBaseUnit(value: Double) = 
     SIValue(value * baseUnitMultiplier, getBaseUnit)
   
-  override def toString = abbreviation
 }

@@ -14,11 +14,9 @@
     <de.blackpinguin.android.sindwirschonda.views.SIValueInput
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        si:label="@string/Speed"
+        si:unit="@string/Speed"
         si:value="1.0"
         si:backgroundColor="#FCC"
-        si:unit="speed"
-        si:unitIndex="2"
     />
     
 
@@ -30,11 +28,9 @@
     <de.blackpinguin.android.sindwirschonda.views.SIValueInput
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        si:label="@string/Time"
+        si:unit="@string/Time"
         si:value="2.0"
         si:backgroundColor="#FCF"
-        si:unit="time"
-        si:unitIndex="0"
     />
     
     <Space
@@ -58,11 +54,9 @@
     <de.blackpinguin.android.sindwirschonda.views.SIValueOutput
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        si:label="@string/Distance"
+        si:unit="@string/Distance"
         si:value="2.0"
         si:backgroundColor="#CFC"
-        si:unit="distance"
-        si:unitIndex="1"
     />
 
 </LinearLayout>

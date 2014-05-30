@@ -1,7 +1,7 @@
 package de.blackpinguin.android.sindwirschonda.views
 
 import de.blackpinguin.android.sindwirschonda._
-import de.blackpinguin.android.sindwirschonda.si.SIValue
+import de.blackpinguin.android.sindwirschonda.si._
 import android.widget.{FrameLayout, GridLayout, TextView, EditText, Spinner, ArrayAdapter}
 import android.util.AttributeSet
 import android.content.Context
@@ -25,14 +25,14 @@ class SIValueOutput(context: Context, attrs: AttributeSet) extends FrameLayout(c
   protected lazy val text = grid.getChildAt(2).asInstanceOf[EditText]
   protected lazy val spinner = grid.getChildAt(3).asInstanceOf[Spinner]
 
+  import scala.language.existentials //to allow SIUnitType[_] as a return value
+  
   protected val (mediator, unitType) = {
 
     //Argumente
     val argarr = context.getTheme.obtainStyledAttributes(attrs, R.styleable.SIValue, 0, 0)
     val color = argarr.getColor(R.styleable.SIValue_backgroundColor, 0)
-    val title = argarr.getString(R.styleable.SIValue_label)
-    var unitType = argarr.getInt(R.styleable.SIValue_unit, 1)
-    val unitIndex = argarr.getInt(R.styleable.SIValue_unitIndex, 0)
+    val unit = argarr.getString(R.styleable.SIValue_unit)
     val initValue = argarr.getFloat(R.styleable.SIValue_value, 1.0f).toDouble
     argarr.recycle
 
@@ -43,21 +43,16 @@ class SIValueOutput(context: Context, attrs: AttributeSet) extends FrameLayout(c
     LayoutInflater.from(context).inflate(getLayoutID, this)
 
     //Titel setzen
-    label.setText(title)
+    label.setText(unit)
 
     //Welche Einheit?
-    unitType = unitType match {
-      //defined in attrs.xml
-      case 1 => R.array.time
-      case 2 => R.array.distance
-      case 3 => R.array.speed
-    }
+    val unitType = SIUnitType(unit)
 
     //Spinner befüllen
-    val adapter = ArrayAdapter.createFromResource(context, unitType, android.R.layout.simple_spinner_item)
+    val adapter = ArrayAdapter.createFromResource(context, unitType.arrayID, android.R.layout.simple_spinner_item)
     adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
     spinner.setAdapter(adapter)
-    spinner.setSelection(unitIndex)
+    spinner.setSelection(unitType.defaultIndex)
 
     //Mediator erstellen
     val m = new SIValueMediator(initValue, unitType, spinner, text, adapter)

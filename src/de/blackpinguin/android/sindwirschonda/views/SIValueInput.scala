@@ -1,6 +1,7 @@
 package de.blackpinguin.android.sindwirschonda.views
 
 import de.blackpinguin.android.sindwirschonda._
+import de.blackpinguin.android.sindwirschonda.si._
 import android.util.AttributeSet
 import android.content.Context
 import android.widget.Button
@@ -31,9 +32,9 @@ class SIValueInput (context: Context, attrs: AttributeSet) extends SIValueOutput
   import de.blackpinguin.android.sindwirschonda.activities.MainActivity
   def selectActivity = unitType match {
     //TODO Klassen
-    case R.array.time => classOf[MainActivity]
-    case R.array.distance => classOf[MainActivity]
-    case R.array.speed => classOf[MainActivity]
+    case SITime => classOf[MainActivity]
+    case SIDistance => classOf[MainActivity]
+    case SISpeed => classOf[MainActivity]
   }
   
   button onClick { _ =>

@@ -14,13 +14,13 @@
         <item >m</item>
         <item >km</item>
         <item >mi</item>
-        <item >AU</item>
-        <item >ly</item>
+        <item >AE</item>
+        <item >Lj</item>
         <item >pc</item>
     </string-array>
     <string-array name="speed">
         <item >km/h</item>
-        <item >mph</item>
+        <item >mi/h</item>
         <item >kn</item>
         <item >m/s</item>
         <item >km/s</item>

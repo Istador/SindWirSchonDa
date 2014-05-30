@@ -4,6 +4,8 @@ import android.app.Activity
 import android.os.Bundle
 import android.content.Intent
 import android.view.{Menu, MenuItem, ViewGroup}
+import android.content.res.Configuration
+import java.util.Locale
 
 abstract class SimpleActivity extends Activity {
   
@@ -18,7 +20,6 @@ abstract class SimpleActivity extends Activity {
   
   //Ob das App Icon oben links als zurück button angezeigt werden soll
   protected def viewHomeAsBack = true
-  
   
   //Layout Objekt
   lazy val content = findViewById(getContentID).asInstanceOf[ViewGroup]
@@ -50,9 +51,16 @@ abstract class SimpleActivity extends Activity {
       case _ =>
         return super.onOptionsItemSelected(item)
     }
-
+  
+  //diese Activity neu starten
+  def restartActivity = {
+    val i = getIntent
+    finish
+    startActivity(i)
+  }
+  
   //Öffnen einer anderen Activity
   def openActivity(c: Class[_]) =
     startActivity(new Intent(this, c))
-  
+    
 }

@@ -4,14 +4,7 @@ import de.blackpinguin.android.sindwirschonda.R
 import de.blackpinguin.android.sindwirschonda.si._
 import android.widget.{EditText, Spinner, ArrayAdapter}
 
-class SIValueMediator(initValue: Double, unitType: Int, spinner: Spinner, text: EditText, adapter: ArrayAdapter[CharSequence]) {
-
-  //Finde über die Abkürzung das passende SIUnit Objekt
-  private def findUnit(abbr: String) = unitType match {
-    case R.array.time => SITime(abbr)
-    case R.array.distance => SIDistance(abbr)
-    case R.array.speed => SISpeed(abbr)
-  }
+class SIValueMediator(initValue: Double, findUnit: SIUnitType[_], spinner: Spinner, text: EditText, adapter: ArrayAdapter[CharSequence]) {
 
   //Instanzvariable
   private var sivalue = SIValue(initValue, findUnit(spinner.getSelectedItem.asInstanceOf[String]))
