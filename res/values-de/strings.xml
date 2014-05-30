@@ -1,11 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Sind wir schon da?</string>
-    <string name="calcTime">Wie lange?</string>
-    <string name="calcDistance">Wie weit?</string>
+    
     <string name="calcSpeed">Wie schnell?</string>
+    <string name="calcDistance">Wie weit?</string>
+    <string name="calcTime">Wie lange?</string>
+    
+    <string name="selectSpeed">Wähle Geschwindigkeit</string>
+    <string name="selectDistance">Wähle Entfernung</string>
+    <string name="selectTime">Wähle Zeit</string>
+    
+    <string name="Speed">Geschwindigkeit</string>
     <string name="Distance">Entfernung</string>
     <string name="Time">Zeit</string>
-    <string name="Speed">Geschwindigkeit</string>
     
 </resources>

@@ -1,0 +1,4 @@
+- changing the language of the device while the app is running, causes it to crash in some situations.
+	Because the language-specific abbreviations are used as keys in static Maps for caching.
+	It's an acceptable bug, because this situation doesn't accur often. Invalidating all caches is too much work.
+

@@ -2,12 +2,22 @@
 <resources>
 
     <string name="app_name">Are we there yet?</string>
-    <string name="calcTime">How long?</string>
-    <string name="calcDistance">How far?</string>
+    
     <string name="calcSpeed">How fast?</string>
-    <string name="Speed">Speed</string>
-    <string name="Time">Time</string>
+    <string name="calcDistance">How far?</string>
+    <string name="calcTime">How long?</string>
+    
+    <string name="selectSpeed">Choose Velocity</string>
+    <string name="selectDistance">Choose Distance</string>
+    <string name="selectTime">Choose Time</string>
+    
+    <string name="Speed">Velocity</string>
     <string name="Distance">Distance</string>
+    <string name="Time">Time</string>
+    
     <string name="points">&#8230;</string>
+    
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
 
 </resources>

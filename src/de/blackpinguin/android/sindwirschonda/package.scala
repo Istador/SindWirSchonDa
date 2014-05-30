@@ -1,17 +1,12 @@
 package de.blackpinguin.android
 
-import android.widget.Button
-import android.widget.ToggleButton
-import android.widget.CompoundButton
+import android.widget.{Button, ToggleButton, EditText, Spinner, CompoundButton, AdapterView}
 import android.widget.CompoundButton.OnCheckedChangeListener
+import android.widget.AdapterView.OnItemSelectedListener
 import android.view.View
 import android.view.View.OnClickListener
-import android.widget.EditText
-import android.text.TextWatcher
-import android.text.Editable
-import android.widget.Spinner
-import android.widget.AdapterView.OnItemSelectedListener
-import android.widget.AdapterView
+import android.text.{TextWatcher, Editable}
+
 
 package object sindwirschonda {
   

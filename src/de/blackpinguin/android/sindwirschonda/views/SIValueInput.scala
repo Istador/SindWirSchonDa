@@ -2,12 +2,13 @@ package de.blackpinguin.android.sindwirschonda.views
 
 import de.blackpinguin.android.sindwirschonda._
 import de.blackpinguin.android.sindwirschonda.si._
+import de.blackpinguin.android.sindwirschonda.activities._
 import android.util.AttributeSet
 import android.content.Context
+import android.content.Intent
 import android.widget.Button
 import android.app.Activity
-import android.content.Intent
-import android.widget.Toast
+
 
 object SIValueInput {
   private[this] var i = 0
@@ -32,14 +33,13 @@ class SIValueInput (context: Context, attrs: AttributeSet) extends SIValueOutput
   import de.blackpinguin.android.sindwirschonda.activities.MainActivity
   def selectActivity = unitType match {
     //TODO Klassen
-    case SITime => classOf[MainActivity]
-    case SIDistance => classOf[MainActivity]
-    case SISpeed => classOf[MainActivity]
+    case SITime => classOf[SelectTime]
+    case SIDistance => classOf[SelectDistance]
+    case SISpeed => classOf[SelectSpeed]
   }
   
   button onClick { _ =>
-    Toast.makeText(context, "test", Toast.LENGTH_SHORT).show
-    //activity.startActivityForResult(new Intent(context, selectActivity), id)
+    activity.startActivityForResult(new Intent(context, selectActivity), id)
   }
   
 }
