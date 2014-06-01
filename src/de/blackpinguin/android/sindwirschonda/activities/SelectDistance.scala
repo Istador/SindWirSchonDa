@@ -5,7 +5,7 @@ import de.blackpinguin.android.sindwirschonda.si._
 import de.blackpinguin.android.sindwirschonda.R
 import de.blackpinguin.android.util.GPS
 
-class SelectDistance extends SelectActivity {
+class SelectDistance extends ButtonsActivity {
   
   override def onCreate(state: android.os.Bundle) = {
     this += getStr(R.string.measure) -> Left{() => Toast.makeText(this, "Measurement... <TODO/>", Toast.LENGTH_SHORT).show }

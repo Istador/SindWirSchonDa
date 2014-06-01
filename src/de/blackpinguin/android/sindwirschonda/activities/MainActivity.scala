@@ -13,9 +13,5 @@ class MainActivity extends ButtonsActivity {
     this += R.string.calcSpeed -> Right(classOf[CalcSpeedActivity])
     super.onCreate(state)
   }
-  
-  def getLayoutID = R.layout.activity_main
-  def getMenuID = R.menu.main
-  def getContentID = R.id.aMain
-  
+    
 }

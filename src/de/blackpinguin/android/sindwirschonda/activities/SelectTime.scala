@@ -4,7 +4,7 @@ import android.widget.Toast
 import de.blackpinguin.android.sindwirschonda.si._
 import de.blackpinguin.android.sindwirschonda.R
 
-class SelectTime extends SelectActivity {
+class SelectTime extends ButtonsActivity {
   
   override def onCreate(state: android.os.Bundle) = {
     this += getStr(R.string.measure) -> Left{() => Toast.makeText(this, "Measurement... <TODO/>", Toast.LENGTH_SHORT).show }

@@ -4,7 +4,7 @@ import android.widget.Toast
 import de.blackpinguin.android.sindwirschonda.si._
 import de.blackpinguin.android.sindwirschonda.R
 
-class SelectSpeed extends SelectActivity {
+class SelectSpeed extends ButtonsActivity {
   
   val c = 299792.458
   
