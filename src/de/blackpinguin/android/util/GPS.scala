@@ -87,7 +87,7 @@ class SinglePosition(callback: GPS.Callback)(implicit context: Context) extends 
   Option(locMan.getBestProvider(cri, false)) match {
     case Some(pro) =>
       locMan.requestSingleUpdate(pro, this, null)
-    case None =>
+    case None => 
       if(callback != null) callback(None)
   }
   

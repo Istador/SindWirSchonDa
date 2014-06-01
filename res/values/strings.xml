@@ -52,11 +52,13 @@
     
 	<string name="points">&#8230;</string>
     
+	<string name="zeroSpeed">0.000 km/h</string>
+	<string name="zeroDistance">0.000 m</string>
 	<string name="zeroTime">00:00:00.000</string>
-    
+	
+	<string name="s1">1s</string>
+	<string name="s5">5s</string>
 	<string name="ok">OK</string>
-    
 	<string name="stop">Stop</string>
-    
 	<string name="start">Start</string>
 </resources>

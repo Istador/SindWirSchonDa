@@ -6,17 +6,11 @@ import android.widget.AdapterView.OnItemSelectedListener
 import android.view.View
 import android.view.View.OnClickListener
 import android.text.{TextWatcher, Editable}
+import android.widget.SeekBar
 
 
 package object sindwirschonda {
-  
-  import scala.language.implicitConversions
-  
-  implicit def UnitToRunnable(f: ()=>Any): Runnable = 
-    new Runnable(){
-      def run = f()
-    }
-  
+    
   //erweitere alle Views implizit
   implicit class ExtendedView(v: View) {
     def enable = v setEnabled true
@@ -26,18 +20,18 @@ package object sindwirschonda {
   //erweitere alle Buttons implizit
   implicit class ExtendedButton(b: Button) {
     //Lambda Expression statt Listener als Parameter 
-    def onClick(f: View => Unit) =
+    def onClick(f: Unit => Unit) =
       b setOnClickListener new OnClickListener {
-        override def onClick(v: View) = f(v)
+        override def onClick(v: View) = f()
       }
   }
 
   //erweitere alle ToggleButtons implizit
-  implicit class ExtendedToggleButton(b: ToggleButton) {
+  implicit class ExtendedToggleButton(tb: ToggleButton) {
     //Lambda Expression statt Listener als Parameter
-    def onChange(f: (CompoundButton, Boolean) => Unit) =
-      b setOnCheckedChangeListener new OnCheckedChangeListener {
-        override def onCheckedChanged(b: CompoundButton, down: Boolean) = f(b, down)
+    def onChange(f: Boolean => Unit) =
+      tb setOnCheckedChangeListener new OnCheckedChangeListener {
+        override def onCheckedChanged(b: CompoundButton, down: Boolean) = if(b == tb) f(down)
       }
   }
   
@@ -52,7 +46,18 @@ package object sindwirschonda {
       }
   }
   
-  //erweitere alle ToggleButtons implizit
+  //erweitere alle SeekBars implizit
+  implicit class ExtendedSeekBar(sb: SeekBar) {
+    //Lambda Expression statt Listener als Parameter
+    def onChange(f: Int => Unit) =
+      sb setOnSeekBarChangeListener new SeekBar.OnSeekBarChangeListener {
+        override def onProgressChanged(s: SeekBar, prog: Int, fromUser: Boolean) = if(fromUser && s == sb) f(prog)
+        override def onStartTrackingTouch(s: SeekBar) = {}
+        override def onStopTrackingTouch(s: SeekBar) = {}
+      }
+  }
+  
+  //erweitere alle Spinner implizit
   implicit class ExtendedSpinner(s: Spinner) {
     //Lambda Expression statt Listener als Parameter
     def onSelect(f: (Int, Object) => Unit) =

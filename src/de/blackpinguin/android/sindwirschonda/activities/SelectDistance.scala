@@ -13,7 +13,7 @@ class SelectDistance extends SelectActivity {
     val ber = GPS(52.518611, 13.408056)
     val nyc = GPS(40.712778, -74.005833)
     
-    this += getStr(R.string.measure) -> Left{() => alert("Measurement... <TODO/>") }
+    this += getStr(R.string.measure) -> Right{classOf[MeasureDistance]}
     
     this += "Hamburg \u2194 Berlin" -> siresult(SIValue(hh.to(ber) / 1000.0, SIDistance.km))
     this += "Hamburg \u2194 New York City" -> siresult(SIValue(hh.to(nyc) / 1000.0, SIDistance.km))
