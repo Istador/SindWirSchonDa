@@ -10,6 +10,13 @@ import android.text.{TextWatcher, Editable}
 
 package object sindwirschonda {
   
+  import scala.language.implicitConversions
+  
+  implicit def UnitToRunnable(f: ()=>Any): Runnable = 
+    new Runnable(){
+      def run = f()
+    }
+  
   //erweitere alle Views implizit
   implicit class ExtendedView(v: View) {
     def enable = v setEnabled true

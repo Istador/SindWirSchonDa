@@ -63,7 +63,6 @@ abstract class ButtonsActivity extends SimpleActivity {
   
   
   def getLayoutID = R.layout.activity_buttons
-  def getMenuID = R.menu.buttons
   def getContentID = R.id.aButtons
   
 }

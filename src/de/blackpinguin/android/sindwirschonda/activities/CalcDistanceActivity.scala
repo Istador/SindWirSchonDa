@@ -8,7 +8,6 @@ class CalcDistanceActivity extends CalcActivity {
   
   def changed = c := (a * b) toUnit c
   
-  def getMenuID = R.menu.calc_distance
   def getLayoutID = R.layout.activity_calc_distance
   def getContentID = R.id.aCalcDistance
 }

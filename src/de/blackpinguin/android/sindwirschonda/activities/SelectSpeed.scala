@@ -1,15 +1,15 @@
 package de.blackpinguin.android.sindwirschonda.activities
 
-import android.widget.Toast
 import de.blackpinguin.android.sindwirschonda.si._
 import de.blackpinguin.android.sindwirschonda.R
 
-class SelectSpeed extends ButtonsActivity {
+class SelectSpeed extends SelectActivity {
   
   val c = 299792.458
   
   override def onCreate(state: android.os.Bundle) = {
-    this += getStr(R.string.measure) -> Left{() => Toast.makeText(this, "Measurement... <TODO/>", Toast.LENGTH_SHORT).show }
+    this += getStr(R.string.measure) -> Left{() => alert("Measurement... <TODO/>") }
+    
     this += getStr(R.string.speed_foot) -> siresult(SIValue(5.0, SISpeed.km_per_h))
     this += getStr(R.string.speed_bike) -> siresult(SIValue(15.0, SISpeed.km_per_h))
     this += getStr(R.string.speed_car) -> siresult(SIValue(50.0, SISpeed.km_per_h))

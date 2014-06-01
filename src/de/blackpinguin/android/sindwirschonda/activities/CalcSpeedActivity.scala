@@ -8,7 +8,6 @@ class CalcSpeedActivity extends CalcActivity {
   
   def changed = c := (a / b) toUnit c
   
-  def getMenuID = R.menu.calc_speed
   def getLayoutID = R.layout.activity_calc_speed
   def getContentID = R.id.aCalcSpeed
 }

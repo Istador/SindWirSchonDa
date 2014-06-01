@@ -11,6 +11,10 @@ import scala.concurrent.ExecutionContext.Implicits.global
 
 object GPS {
   
+  implicit class ExtLocation(loc: Location){
+    def to(dest: Location): Double = loc.distanceTo(dest).toDouble
+  }
+    
   type Callback = Option[Location] => Unit
   
   def toStr(loc: Option[Location]) = 
@@ -21,7 +25,12 @@ object GPS {
   
   def getCurrent(callback: Callback)(implicit context: Context) = new ContinuousUpdates(callback)
   
-  def distance(a: Location, b: Location): Double = 0.0
+  def apply(lat: Double, lon: Double): Location = {
+      val l = new Location("dummyprovider")
+      l.setLatitude(lat)
+      l.setLongitude(lon)
+      l
+    } 
   
 }
 

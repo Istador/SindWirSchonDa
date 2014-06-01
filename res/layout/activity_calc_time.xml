@@ -29,7 +29,7 @@
         android:layout_height="wrap_content"
         si:unit="@string/Speed"
         si:value="1.0"
-        si:backgroundColor="#FCF"
+        si:backgroundColor="#CCF"
     />
     
     <Space

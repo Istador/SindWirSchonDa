@@ -21,6 +21,7 @@
             style="?android:attr/buttonStyleSmall"
             android:layout_gravity="fill_vertical"
             android:layout_width="100dp"
+            android:layout_height="50dp"
             android:text="@string/points"
             />
 

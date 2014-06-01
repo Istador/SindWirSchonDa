@@ -30,7 +30,7 @@
         android:layout_height="wrap_content"
         si:unit="@string/Time"
         si:value="2.0"
-        si:backgroundColor="#FCF"
+        si:backgroundColor="#CFC"
     />
     
     <Space
@@ -56,7 +56,7 @@
         android:layout_height="wrap_content"
         si:unit="@string/Speed"
         si:value="1.0"
-        si:backgroundColor="#CFC"
+        si:backgroundColor="#CCF"
     />
     
 </LinearLayout>

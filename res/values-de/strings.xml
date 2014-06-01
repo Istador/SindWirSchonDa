@@ -10,6 +10,10 @@
     <string name="selectDistance">Wähle Entfernung</string>
     <string name="selectTime">Wähle Zeit</string>
     
+    <string name="measureSpeed">Geschwindigkeitsmessung</string>
+    <string name="measureDistance">Entfernungsmessung</string>
+    <string name="measureTime">Zeitmessung</string>
+    
     <string name="Speed">Geschwindigkeit</string>
     <string name="Distance">Entfernung</string>
     <string name="Time">Zeit</string>

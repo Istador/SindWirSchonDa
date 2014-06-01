@@ -7,6 +7,8 @@ import android.view.{Menu, MenuItem, ViewGroup}
 import android.content.res.Configuration
 import java.util.Locale
 import de.blackpinguin.android.sindwirschonda.si.SIValue
+import de.blackpinguin.android.sindwirschonda.R
+import android.widget.Toast
 
 abstract class SimpleActivity extends Activity {
   
@@ -17,7 +19,7 @@ abstract class SimpleActivity extends Activity {
   protected def getContentID: Int
   
   //R.id vom Menü
-  protected def getMenuID: Int
+  protected def getMenuID: Int = R.menu.nomenu
   
   //Ob das App Icon oben links als zurück button angezeigt werden soll
   protected def viewHomeAsBack = true
@@ -62,7 +64,8 @@ abstract class SimpleActivity extends Activity {
   
   //Öffnen einer anderen Activity
   def openActivity(c: Class[_]) =
-    startActivity(new Intent(this, c))
+    //startActivity(new Intent(this, c))
+    startActivityForResult(new Intent(this, c), 0)
  
   //einer aufrufenden Activity ein Ergebnis zurückliefern
   def result(s: =>Serializable) = Left{() =>
@@ -75,5 +78,8 @@ abstract class SimpleActivity extends Activity {
   def siresult(s: =>SIValue) = result(s.serialize)
   
   def getStr(id: Int):String = getResources.getString(id)
+  
+  def alert(str: String) = 
+    Toast.makeText(this, str, Toast.LENGTH_SHORT).show
   
 }

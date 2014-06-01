@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="de.blackpinguin.android.sindwirschonda"
-    android:versionCode="122"
+    android:versionCode="173"
     android:versionName="0.7" >
 
     <uses-sdk
@@ -46,6 +46,11 @@
         <activity
             android:name="de.blackpinguin.android.sindwirschonda.activities.SelectTime"
             android:label="@string/selectTime" >
+        </activity>
+        
+        <activity
+            android:name="de.blackpinguin.android.sindwirschonda.activities.MeasureTime"
+            android:label="@string/measureTime" >
         </activity>
     </application>
 

@@ -10,6 +10,10 @@
     <string name="selectDistance">Choose Distance</string>
     <string name="selectTime">Choose Time</string>
     
+    <string name="measureSpeed">Measure Velocity</string>
+    <string name="measureDistance">Measure Distance</string>
+    <string name="measureTime">Measure Time</string>
+    
     <string name="Speed">Velocity</string>
     <string name="Distance">Distance</string>
     <string name="Time">Time</string>
@@ -47,4 +51,12 @@
     <string name="time.universe">Universe\'s age</string>
     
 	<string name="points">&#8230;</string>
+    
+	<string name="zeroTime">00:00:00.000</string>
+    
+	<string name="ok">OK</string>
+    
+	<string name="stop">Stop</string>
+    
+	<string name="start">Start</string>
 </resources>
