@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <string name="app_name">Are we there yet?</string>
     
     <string name="calcSpeed">How fast?</string>
@@ -15,9 +14,37 @@
     <string name="Distance">Distance</string>
     <string name="Time">Time</string>
     
-    <string name="points">&#8230;</string>
+    <string name="measure">Measure&#8230;</string>
     
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
-
+    <string name="speed.foot">By foot</string>
+    <string name="speed.bike">Bike</string>
+    <string name="speed.car">Car, speed limit</string>
+    <string name="speed.autobahn">Car, german autobahn</string>
+    <string name="speed.airplane">Airbus A380</string>
+    <string name="speed.mach1">Speed of sound (Mach 1)</string>
+    <string name="speed.rocket">Rocket</string>
+    <string name="speed.warp1">Speed of light (Warp 1)</string>
+    <string name="speed.warp2">Warp 2</string>
+    <string name="speed.warp3">Warp 3</string>
+    <string name="speed.warp4">Warp 4</string>
+    <string name="speed.warp9">Warp 9</string>
+    <string name="speed.warp10">Warp 10</string>
+    
+    <string name="dist.moon">Moon</string>
+    <string name="dist.sun">Sun</string>
+    <string name="dist.mars">Mars</string>
+    <string name="dist.nextpsys">Alpha Centauri</string>
+    <string name="dist.nextgalaxy">Canis Major Dwarf Galaxy</string>
+    
+    <string name="time.moon">Lunar phase</string>
+    <string name="time.pregnancy">Pregnancy</string>
+    <string name="time.decade">Decade</string>
+    <string name="time.ttl">Life expectancy</string>
+    <string name="time.p239">Plutonium 239 half-life</string>
+    <string name="time.calc42">Calculate 42</string>
+    <string name="time.u235">Uranium 235 half-life</string>
+    <string name="time.earth">Earth\'s age</string>
+    <string name="time.universe">Universe\'s age</string>
+    
+	<string name="points">&#8230;</string>
 </resources>

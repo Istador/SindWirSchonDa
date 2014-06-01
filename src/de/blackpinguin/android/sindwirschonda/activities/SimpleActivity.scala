@@ -6,6 +6,7 @@ import android.content.Intent
 import android.view.{Menu, MenuItem, ViewGroup}
 import android.content.res.Configuration
 import java.util.Locale
+import de.blackpinguin.android.sindwirschonda.si.SIValue
 
 abstract class SimpleActivity extends Activity {
   
@@ -62,5 +63,17 @@ abstract class SimpleActivity extends Activity {
   //Öffnen einer anderen Activity
   def openActivity(c: Class[_]) =
     startActivity(new Intent(this, c))
-    
+ 
+  //einer aufrufenden Activity ein Ergebnis zurückliefern
+  def result(s: =>Serializable) = Left{() =>
+    val i = new Intent()
+    i.putExtra("result", s)
+    setResult(Activity.RESULT_OK, i)
+    finish
+  }
+  
+  def siresult(s: =>SIValue) = result(s.serialize)
+  
+  def getStr(id: Int):String = getResources.getString(id)
+  
 }

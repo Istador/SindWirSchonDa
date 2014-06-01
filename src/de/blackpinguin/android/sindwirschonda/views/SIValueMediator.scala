@@ -22,7 +22,7 @@ class SIValueMediator(initValue: Double, findUnit: SIUnitType[_], spinner: Spinn
       val abbr = newVal.unit.abbreviation
       //finde die Abkürzung
       for (i <- 0 until adapter.getCount)
-        if (abbr.equals(adapter.getItem(i).asInstanceOf[CharSequence])) {
+        if (abbr.equals(adapter.getItem(i).toString)) {
           //wähle die Einheit aus
           spinner.setSelection(i)
           //ändere die Variable

@@ -13,13 +13,13 @@ import android.app.Activity
 object SIValueInput {
   private[this] var i = 0
   private[this] var map = Map[Int, SIValueInput]()
-  private[SIValueInput] def getID(in: SIValueInput) = {
+  private[SIValueInput] def getID(in: SIValueInput) = synchronized {
     i += 1
     map += i -> in
     i
   }
   
-  def apply(id: Int) = map(i)
+  def apply(id: Int) = map.get(id)
 }
 
 class SIValueInput (context: Context, attrs: AttributeSet) extends SIValueOutput(context, attrs) {
@@ -40,6 +40,13 @@ class SIValueInput (context: Context, attrs: AttributeSet) extends SIValueOutput
   
   button onClick { _ =>
     activity.startActivityForResult(new Intent(context, selectActivity), id)
+  }
+  
+  def onResult(data: Intent) = {
+    Option(data.getExtras.getSerializable("result")).foreach{ x => 
+      val y = x.asInstanceOf[SIValue.Serialized].unserialize
+      mediator.value = y
+    }
   }
   
 }

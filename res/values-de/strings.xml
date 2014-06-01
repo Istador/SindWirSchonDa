@@ -14,4 +14,36 @@
     <string name="Distance">Entfernung</string>
     <string name="Time">Zeit</string>
     
+    <string name="measure">Messe&#8230;</string>
+    
+    <string name="speed.foot">zu Fuß</string>
+    <string name="speed.bike">Fahrrad</string>
+    <string name="speed.car">Auto, geschlossene Ortschaft</string>
+    <string name="speed.autobahn">Auto, Autobahn</string>
+    <string name="speed.airplane">Airbus A380</string>
+    <string name="speed.mach1">Schallgeschwindigkeit (Mach 1)</string>
+    <string name="speed.rocket">Rakete</string>
+    <string name="speed.warp1">Lichtgeschwindigkeit (Warp 1)</string>
+    <string name="speed.warp2">Warp 2</string>
+    <string name="speed.warp3">Warp 3</string>
+    <string name="speed.warp4">Warp 4</string>
+    <string name="speed.warp9">Warp 9</string>
+    <string name="speed.warp10">Warp 10</string>
+    
+    <string name="dist.moon">Mond</string>
+    <string name="dist.sun">Sonne</string>
+    <string name="dist.mars">Mars</string>
+    <string name="dist.nextpsys">Alpha Centauri</string>
+    <string name="dist.nextgalaxy">Canis-Major-Zwerggalaxie</string>
+    
+    <string name="time.moon">Mondphase</string>
+    <string name="time.pregnancy">Schwangerschaft</string>
+    <string name="time.decade">Dekade</string>
+    <string name="time.ttl">Lebenserwartung</string>
+    <string name="time.p239">Plutonium 239 Halbwertszeit</string>
+    <string name="time.calc42">Berechne 42</string>
+    <string name="time.u235">Uranium 235 Halbwertszeit</string>
+    <string name="time.earth">Alter der Erde</string>
+    <string name="time.universe">Alter des Universums</string>
+    
 </resources>
