@@ -32,10 +32,9 @@ class SIValueInput (context: Context, attrs: AttributeSet) extends SIValueOutput
   
   import de.blackpinguin.android.sindwirschonda.activities.MainActivity
   def selectActivity = unitType match {
-    //TODO Klassen
-    case SITime => classOf[SelectTime]
-    case SIDistance => classOf[SelectDistance]
-    case SISpeed => classOf[SelectSpeed]
+    case SITime => classOf[SelectTimeActivity]
+    case SIDistance => classOf[SelectDistanceActivity]
+    case SISpeed => classOf[SelectSpeedActivity]
   }
   
   button onClick { _ =>

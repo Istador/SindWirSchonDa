@@ -7,7 +7,7 @@ import de.blackpinguin.android.sindwirschonda.views._
 import de.blackpinguin.android.sindwirschonda.si._
 import android.content.Intent
 
-abstract class CalcActivity extends SimpleActivity {
+abstract class ACalcActivity extends ASimpleActivity {
   
   //make sure that these are created at runtime
   SIDistance ; SISpeed ; SITime

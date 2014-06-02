@@ -3,10 +3,10 @@ package de.blackpinguin.android.sindwirschonda.activities
 import de.blackpinguin.android.sindwirschonda.si._
 import de.blackpinguin.android.sindwirschonda.R
 
-class SelectTime extends SelectActivity {
+class SelectTimeActivity extends ASelectActivity {
   
   override def onCreate(state: android.os.Bundle) = {
-    this += getStr(R.string.measure) -> Right{classOf[MeasureTime]}
+    this += getStr(R.string.measure) -> Right{classOf[MeasureTimeActivity]}
     
     this += getStr(R.string.time_moon) -> siresult(SIValue(29.53, SITime.d))
     this += getStr(R.string.time_pregnancy) -> siresult(SIValue(266.0, SITime.d))

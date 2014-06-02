@@ -4,7 +4,7 @@ import android.content.Intent
 import android.app.Activity
 import de.blackpinguin.android.sindwirschonda.si.SIValue
 
-abstract class SelectActivity extends ButtonsActivity {
+abstract class ASelectActivity extends AButtonsActivity {
   
   //Ergebnisse von sub aktivities (Messung) weiterreichen 
   override def onActivityResult(req: Int, res: Int, data: Intent) = 

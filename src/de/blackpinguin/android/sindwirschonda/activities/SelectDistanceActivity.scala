@@ -5,7 +5,7 @@ import de.blackpinguin.android.sindwirschonda.R
 import de.blackpinguin.android.util.GPS
 import de.blackpinguin.android.util.GPS._
 
-class SelectDistance extends SelectActivity {
+class SelectDistanceActivity extends ASelectActivity {
   
   override def onCreate(state: android.os.Bundle) = {
     
@@ -13,7 +13,7 @@ class SelectDistance extends SelectActivity {
     val ber = GPS(52.518611, 13.408056)
     val nyc = GPS(40.712778, -74.005833)
     
-    this += getStr(R.string.measure) -> Right{classOf[MeasureDistance]}
+    this += getStr(R.string.measure) -> Right{classOf[MeasureDistanceActivity]}
     
     this += "Hamburg \u2194 Berlin" -> siresult(SIValue(hh.to(ber) / 1000.0, SIDistance.km))
     this += "Hamburg \u2194 New York City" -> siresult(SIValue(hh.to(nyc) / 1000.0, SIDistance.km))

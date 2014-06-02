@@ -9,8 +9,12 @@ import java.util.Locale
 import de.blackpinguin.android.sindwirschonda.si.SIValue
 import de.blackpinguin.android.sindwirschonda.R
 import android.widget.Toast
+import android.content.Context
 
-abstract class SimpleActivity extends Activity {
+abstract class ASimpleActivity extends Activity {
+  
+  implicit lazy val activity: Activity = this
+  implicit lazy val context: Context = this
   
   //R.id vom layout
   protected def getLayoutID: Int

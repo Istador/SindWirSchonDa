@@ -6,7 +6,7 @@ import android.graphics.PorterDuff
 import android.graphics.Color
 import android.graphics.LightingColorFilter
 
-class MainActivity extends ButtonsActivity {
+class MainActivity extends AButtonsActivity {
   
   override def viewHomeAsBack = false
   
@@ -14,6 +14,7 @@ class MainActivity extends ButtonsActivity {
     this += R.string.calcTime -> Right(classOf[CalcTimeActivity])
     this += R.string.calcDistance -> Right(classOf[CalcDistanceActivity])
     this += R.string.calcSpeed -> Right(classOf[CalcSpeedActivity])
+    
     super.onCreate(state)
     
     //Buttons einfärben

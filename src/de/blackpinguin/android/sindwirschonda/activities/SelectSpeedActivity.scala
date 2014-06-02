@@ -3,7 +3,7 @@ package de.blackpinguin.android.sindwirschonda.activities
 import de.blackpinguin.android.sindwirschonda.si._
 import de.blackpinguin.android.sindwirschonda.R
 
-class SelectSpeed extends SelectActivity {
+class SelectSpeedActivity extends ASelectActivity {
   
   val c = 299792.458
   

@@ -36,4 +36,5 @@ abstract class SIUnit(val abbreviation: String, val baseUnitMultiplier: Double) 
   def toBaseUnit(value: Double) = 
     SIValue(value * baseUnitMultiplier, getBaseUnit)
   
+  override def toString = abbreviation
 }

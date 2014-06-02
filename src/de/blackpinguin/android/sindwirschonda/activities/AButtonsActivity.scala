@@ -4,7 +4,7 @@ import android.widget.Button
 import android.view.ViewGroup.LayoutParams
 import de.blackpinguin.android.sindwirschonda._
 
-abstract class ButtonsActivity extends SimpleActivity {
+abstract class AButtonsActivity extends ASimpleActivity {
   
   type E = Either[Function0[Any], Class[_]]
   

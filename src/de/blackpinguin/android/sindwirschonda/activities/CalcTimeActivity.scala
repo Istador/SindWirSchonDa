@@ -4,7 +4,7 @@ import de.blackpinguin.android.sindwirschonda.R
 import de.blackpinguin.android.sindwirschonda.views._
 import de.blackpinguin.android.sindwirschonda.si._
 
-class CalcTimeActivity extends CalcActivity {
+class CalcTimeActivity extends ACalcActivity {
   
   def changed = c := (a / b) toUnit c
   
