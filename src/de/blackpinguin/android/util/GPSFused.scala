@@ -27,7 +27,7 @@ private[util] class GPSFused (implicit context: Context) extends GPSCommon
   private[this] def request = {
     val req = LocationRequest.create
       .setInterval(timing)
-      .setFastestInterval(500)
+      .setFastestInterval(timing)
       .setPriority(LocationRequest.PRIORITY_HIGH_ACCURACY)
       //.setSmallestDisplacement(1f) //1m 
     client.requestLocationUpdates(req, this)

@@ -8,7 +8,8 @@ class SelectSpeedActivity extends ASelectActivity {
   val c = 299792.458
   
   override def onCreate(state: android.os.Bundle) = {
-    this += getStr(R.string.measure) -> Left{() => alert("Measurement... <TODO/>") }
+    
+    this += getStr(R.string.measure) -> Right{classOf[MeasureSpeedActivity]}
     
     this += getStr(R.string.speed_foot) -> siresult(SIValue(5.0, SISpeed.km_per_h))
     this += getStr(R.string.speed_bike) -> siresult(SIValue(15.0, SISpeed.km_per_h))

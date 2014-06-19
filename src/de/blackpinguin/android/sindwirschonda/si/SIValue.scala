@@ -80,5 +80,8 @@ case class SIValue(value: Double, unit: SIUnit) {
       SIValue(toBaseUnit.value / other.toBaseUnit.value, u)
   }
   
+  def *(scale: Double): SIValue = SIValue(value * scale, unit)
+  def /(scale: Double): SIValue = SIValue(value / scale, unit)
+  
   override def toString = value.toString+" "+unit.abbreviation 
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="de.blackpinguin.android.sindwirschonda"
-    android:versionCode="205"
+    android:versionCode="236"
     android:versionName="0.7" >
 
     <uses-sdk
@@ -70,7 +70,13 @@
     		android:configChanges="keyboardHidden|orientation|screenSize"
             >
         </activity>
-        
+        <activity
+            android:name="de.blackpinguin.android.sindwirschonda.activities.MeasureSpeedActivity"
+            android:label="@string/measureSpeed"
+            android:screenOrientation="portrait"
+    		android:configChanges="keyboardHidden|orientation|screenSize"
+            >
+        </activity>
         <activity
             android:name="de.blackpinguin.android.sindwirschonda.activities.MeasureDistanceActivity"
             android:label="@string/measureDistance"

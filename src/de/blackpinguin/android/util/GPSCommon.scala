@@ -16,7 +16,7 @@ private[util] abstract class GPSCommon extends GPS.Listener {
     //sofern vorhanden dem callback die letzte Position schicken
     for (c <- callback; tmp <- lastPos) {
       val pos = new Location(tmp)
-      pos.setTime(System.currentTimeMillis) //zum aktuellen Zeitpunkt
+      pos.setElapsedRealtimeNanos(System.nanoTime) //zum aktuellen Zeitpunkt
       c(Some(pos))
     }
     //falls ein Fehler aufgetreten ist diesen an den neuen callback schicken
