@@ -2,51 +2,58 @@ package de.blackpinguin.android.sindwirschonda.si
 
 import android.content.Context
 
+//über dieses Objekt lassen sich Einheitentypen finden (z.B. Geschwindigkeit, Zeit, Entfernung)
 object SIUnitType {
-    
-  var cache = Map[String, SIUnitType[_]]()
+
+  private[this] var cache = Map[String, SIUnitType[_]]()
+  protected[SIUnitType] def +=(ut: SIUnitType[_]) = cache += ut.name -> ut
   def apply(name: String) = cache.getOrElse(name, null)
-  def +=(ut: SIUnitType[_]) = cache += ut.name -> ut
-  
+
 }
 
-//Einheitentyp / physikalische Größe
+//Trait
+//für alle Einheitentypen, fügt sie automatisch dem Cache des Begleitobjektes hinzu
 trait SIUnitType[T] {
-  
+
+  //füge konkrete Subklassen von SIUnitType in den Cache des Objektes 
   SIUnitType += this
-  
-  //ID des Namens
+
+  //(abstrakt) ID des Namens
   def nameID: Int
-  
-  //ID des Arrays mit Einheiten
+
+  //(abstrakt) ID des Arrays mit Einheiten
   def arrayID: Int
-  
+
   //yay, reflection!
-  lazy val clazz = Class.forName(((str:String) => str.substring(0, str.length - 1))(getClass.getName))
-  
+  //hier notwendig, um auf die Klasse zum Begleitobjekt zugreifen zu können 
+  lazy val clazz = Class.forName(((str: String) => str.substring(0, str.length - 1))(getClass.getName))
+
   //Int konstruktor, der auf den String konstruktor zurückgreift
-  def apply(index: Int, multiplier: Double):T = {
+  //Über den Index wird der String im Array ausgewählt
+  def apply(index: Int, multiplier: Double): T = {
     val abbr = array(index)
-    
+
     //yay, reflection!
     clazz.getConstructor(classOf[String], classOf[Double])
-      .newInstance(Array[Object](abbr, multiplier:java.lang.Double):_*)
+      .newInstance(Array[Object](abbr, multiplier: java.lang.Double): _*)
       .asInstanceOf[T]
   }
-  
+
   //alle Einheiten dieses Einheitentypes
   private var cache = Map[String, SIUnit]()
+
   //finde eine Einheit dieses Types über die Abkürzung
   def apply(abbr: String) = cache.getOrElse(abbr, SIUnit.NaU)
-  //neue Einheit hinzufügen
-  def +=(unit: SIUnit) = cache += unit.abbreviation -> unit
-  
+
+  //neue Einheit hinzufügen (nur für das package si aufrufbar)
+  protected[si] def +=(unit: SIUnit) = cache += unit.abbreviation -> unit
+
   private def res = Class.forName("android.app.ActivityThread").getMethod("currentApplication").invoke(null).asInstanceOf[Context].getResources
   lazy val name = res.getString(nameID)
   lazy val array = res.getStringArray(arrayID)
-  lazy val defaultIndex = array.indexWhere{ this(_).baseUnitMultiplier == 1.0 }
+  lazy val defaultIndex = array.indexWhere { this(_).baseUnitMultiplier == 1.0 }
   lazy val baseUnit = this(array(defaultIndex))
-  
+
   override def toString = name
-  
+
 }

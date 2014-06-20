@@ -1,21 +1,30 @@
 package de.blackpinguin.android.sindwirschonda.views
 
-import de.blackpinguin.android.sindwirschonda._
-import de.blackpinguin.android.sindwirschonda.si._
-import android.widget.{FrameLayout, GridLayout, TextView, EditText, Spinner, ArrayAdapter}
-import android.util.AttributeSet
-import android.content.Context
-import android.view.LayoutInflater
+import scala.language.existentials
+
 import android.app.Activity
+import android.content.Context
+import android.util.AttributeSet
+import android.view.LayoutInflater
+import android.widget.ArrayAdapter
+import android.widget.EditText
+import android.widget.FrameLayout
+import android.widget.GridLayout
+import android.widget.Spinner
+import android.widget.TextView
+import de.blackpinguin.android.sindwirschonda._
+import de.blackpinguin.android.sindwirschonda.R
+import de.blackpinguin.android.sindwirschonda.si._
 
 class SIValueOutput(context: Context, attrs: AttributeSet) extends FrameLayout(context, attrs) {
 
-  //Instanzvariable
+  //von außen veränderbare Instanzvariable
+  //Mehtode die nach einer Änderung des Wertes aufgerufen werden soll
   var callback: Unit => Unit = null
-  
+
   //Callback ausführen sofern nicht null
-  def doCallback: Unit = if (callback != null) callback() 
-  
+  def doCallback: Unit = if (callback != null) callback()
+
   protected def getLayoutID = R.layout.lay_si_value_output
 
   //GUI Elemente
@@ -26,15 +35,15 @@ class SIValueOutput(context: Context, attrs: AttributeSet) extends FrameLayout(c
   protected lazy val spinner = grid.getChildAt(3).asInstanceOf[Spinner]
 
   import scala.language.existentials //to allow SIUnitType[_] as a return value
-  
+
   protected val (mediator, unitType) = {
 
-    //Argumente
+    //Argumente aus dem Layout auslesen
     val argarr = context.getTheme.obtainStyledAttributes(attrs, R.styleable.SIValue, 0, 0)
     val color = argarr.getColor(R.styleable.SIValue_backgroundColor, 0)
     val unit = argarr.getString(R.styleable.SIValue_unit)
     val initValue = argarr.getFloat(R.styleable.SIValue_value, 1.0f).toDouble
-    argarr.recycle
+    argarr.recycle //argument-Objekt wird nicht mehr benötigt
 
     //Hintergrundfarbe setzen
     setBackgroundColor(color)
@@ -57,11 +66,11 @@ class SIValueOutput(context: Context, attrs: AttributeSet) extends FrameLayout(c
     //Mediator erstellen
     val m = new SIValueMediator(initValue, unitType, spinner, text, adapter)
 
-    //Mediator zurückgeben
+    //Mediator und Einheit zurückgeben
     (m, unitType)
   }
 
-  //bei Spinner auswahl
+  //bei Spinner auswahl einer Einheit
   spinner onSelect { (pos, obj) =>
     mediator.changeUnit(obj.asInstanceOf[String])
     doCallback

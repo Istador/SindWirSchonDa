@@ -1,9 +1,11 @@
 package de.blackpinguin.android.sindwirschonda.views
 
-import de.blackpinguin.android.sindwirschonda.R
+import android.widget.ArrayAdapter
+import android.widget.EditText
+import android.widget.Spinner
 import de.blackpinguin.android.sindwirschonda.si._
-import android.widget.{EditText, Spinner, ArrayAdapter}
 
+//Mediator, um den Zugriff auf das SIValue Objekt zu steuern und zu kapseln  
 class SIValueMediator(initValue: Double, findUnit: SIUnitType[_], spinner: Spinner, text: EditText, adapter: ArrayAdapter[CharSequence]) {
 
   //Instanzvariable
@@ -18,14 +20,17 @@ class SIValueMediator(initValue: Double, findUnit: SIUnitType[_], spinner: Spinn
   //Setter
   def value_=(newVal: SIValue): Boolean = {
     if (newVal != SIValue.NaV) {
-      //Abkürzung der Einheit
+
+      //Abkürzung der Einheit des neuen Wertes
       val abbr = newVal.unit.abbreviation
-      //finde die Abkürzung
+
+      //finde die Abkürzung im Spinner
       for (i <- 0 until adapter.getCount)
+        //wenn dies die Abkürzung ist
         if (abbr.equals(adapter.getItem(i).toString)) {
-          //wähle die Einheit aus
+          //wähle die Einheit im Spinner aus
           spinner.setSelection(i)
-          //ändere die Variable
+          //ändere die Instanzvariable
           sivalue = newVal
           //ändere den angezeigten Wert
           text.setText(sivalue.value.toString)
@@ -35,6 +40,7 @@ class SIValueMediator(initValue: Double, findUnit: SIUnitType[_], spinner: Spinn
     false
   }
 
+  //Wert hat sich geändert, aber nicht die Einheit
   //Wert im EditText hat sich geändert, aktualisiere Wert der Variablen
   def changeValue(input: String) = {
     try {
@@ -52,6 +58,7 @@ class SIValueMediator(initValue: Double, findUnit: SIUnitType[_], spinner: Spinn
     }
   }
 
+  //Einheit hat sich geändert, aber nicht der Wert - rechne Wert auf neue Einheit um
   //Einheit hat sich im Spinner geändert, aktualisiere Einheit der Variablen
   def changeUnit(abbr: String) = {
     val oldVal = sivalue

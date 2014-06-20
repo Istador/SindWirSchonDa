@@ -1,87 +1,92 @@
 package de.blackpinguin.android.sindwirschonda.si
 
-import java.io.IOException
-import java.io.ObjectInputStream
-import java.io.ObjectOutputStream
-
 //Begleitobjekt ("static")
 object SIValue {
-  
-  case class Serialized(value: Double, unitType: String, unit: String){
+
+  //SIUnit lässt sich nicht einfach serialisieren, deshalb manuelle Serialisierung
+  case class Serialized(value: Double, unitType: String, unit: String) {
     def unserialize: SIValue = SIValue(value, SIUnitType(unitType)(unit))
   }
-  
+
   object NotAValue extends SIValue(Double.NaN, SIUnit.NaU)
-  
+
   val NaV = NotAValue
 }
 
-
-
 //Klasse
 case class SIValue(value: Double, unit: SIUnit) {
-  
+
+  //SIUnit lässt sich nicht einfach serialisieren, deshalb manuelle Serialisierung
   def serialize = SIValue.Serialized(value, unit.unitType.name, unit.abbreviation)
-  
+
   //Dieses Value-Objekt umwandeln in die Basiseinheit
   lazy val toBaseUnit =
-    if(unit == unit.getBaseUnit) this
+    if (unit == unit.getBaseUnit) this
     else SIValue(unit.toBaseUnit(value), unit.getBaseUnit)
-  
-  def toUnit(newUnit: SIUnit) = 
-    if(unit.getBaseUnit != newUnit.getBaseUnit)
+
+  //diese Größe umrechnen in eine andere Einheit
+  def toUnit(newUnit: SIUnit) =
+    if (unit.getBaseUnit != newUnit.getBaseUnit)
       SIValue.NaV
     else
       newUnit.fromBaseUnit(this.toBaseUnit)
-  
+
   /*
    * Operationen
    */
-  
+
   //Addition
   def +(other: SIValue): SIValue =
     //nicht identische Größen
-    if(unit.getBaseUnit != other.unit.getBaseUnit)
+    if (unit.getBaseUnit != other.unit.getBaseUnit)
       SIValue.NaV
     //identische Größen
     else
       unit.fromBaseUnit(this.toBaseUnit.value + other.toBaseUnit.value)
-  
+
   //Subtraktion
-  def -(other: SIValue): SIValue = 
+  def -(other: SIValue): SIValue =
     //nicht identische Größen
-    if(unit.getBaseUnit != other.unit.getBaseUnit)
+    if (unit.getBaseUnit != other.unit.getBaseUnit)
       SIValue.NaV
     //identische Größen
     else
       unit.fromBaseUnit(this.toBaseUnit.value - other.toBaseUnit.value)
-  
+
   //Multiplikation
   def *(other: SIValue): SIValue = {
     //Einheit die bei der Operation resultiert
     val u = unit * other.unit
     //keine bekannte Ausgabeeinheit
-    if(u == SIUnit.NaU)
+    if (u == SIUnit.NaU)
       SIValue.NaV
     //Operation ist möglich
     else
       SIValue(toBaseUnit.value * other.toBaseUnit.value, u)
   }
-  
+
   //Division
   def /(other: SIValue): SIValue = {
     //Einheit die bei der Operation resultiert
     val u = unit / other.unit
     //keine bekannte Ausgabeeinheit
-    if(u == SIUnit.NaU)
+    if (u == SIUnit.NaU)
       SIValue.NaV
     //Operation ist möglich
     else
       SIValue(toBaseUnit.value / other.toBaseUnit.value, u)
   }
-  
+
   def *(scale: Double): SIValue = SIValue(value * scale, unit)
   def /(scale: Double): SIValue = SIValue(value / scale, unit)
-  
-  override def toString = value.toString+" "+unit.abbreviation 
+
+  //andere Methodennamen für Java-Anwendungen
+  def add(other: SIValue) = this + other
+  def sub(other: SIValue) = this - other
+  def mult(other: SIValue) = this * other
+  def div(other: SIValue) = this / other
+  def mult(scale: Double) = this * scale
+  def div(scale: Double) = this / scale
+
+  override def toString = value.toString + " " + unit.abbreviation
 }

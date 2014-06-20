@@ -1,14 +1,16 @@
 package de.blackpinguin.android.util
 
-import android.os.Bundle
+import android.content.Context
+import android.location.Criteria
+import android.location.Location
 import android.location.LocationListener
 import android.location.LocationManager
-import android.location.Criteria
-import android.content.Context
-import android.location.Location
+import android.os.Bundle
 
+//Auslesen von Locations manuell über das GPS Modul, sofern vorhanden
+//nur für dieses Package
 private[util] class GPSManual(implicit context: Context) extends GPSCommon with LocationListener {
-  
+
   //Manager erstellen
   private[this] val locMan = context.getSystemService(Context.LOCATION_SERVICE).asInstanceOf[LocationManager]
 
@@ -39,13 +41,12 @@ private[util] class GPSManual(implicit context: Context) extends GPSCommon with 
       }
     }
   }
-  
-  //Listenermethoden
+
+  //LocationListener Methoden
   def onLocationChanged(loc: Location) = onLocation(loc)
   def onProviderDisabled(pro: String) = error
   def onProviderEnabled(pro: String) = {}
   def onStatusChanged(pro: String, status: Int, extras: Bundle) = {}
-  
-  
+
   start
 }

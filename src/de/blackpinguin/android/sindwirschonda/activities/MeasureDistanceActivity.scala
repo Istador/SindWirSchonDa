@@ -1,12 +1,15 @@
 package de.blackpinguin.android.sindwirschonda.activities
 
+import android.location.Location
+import android.widget.Button
+import android.widget.SeekBar
+import android.widget.TextView
+import android.widget.ToggleButton
 import de.blackpinguin.android.sindwirschonda._
 import de.blackpinguin.android.sindwirschonda.R
 import de.blackpinguin.android.sindwirschonda.si._
 import de.blackpinguin.android.util.GPS
 import de.blackpinguin.android.util.GPS._
-import android.widget.{ Button, ToggleButton, TextView, SeekBar }
-import android.location.Location
 
 class MeasureDistanceActivity extends ASimpleActivity {
 
@@ -22,20 +25,19 @@ class MeasureDistanceActivity extends ASimpleActivity {
 
   private[this] val zero = SIValue(0.0, SIDistance.m)
 
-  
   private[this] var _distance = zero
   private[this] def distance = _distance
   private[this] def distance_=(si: SIValue): Unit = {
     _distance = si
-    if(distance > 1000.0 && distance.unit == SIDistance.m)
+    if (distance > 1000.0 && distance.unit == SIDistance.m)
       _distance = distance.toUnit(SIDistance.km)
-    textDistance.setText(distance.value.formatted("%.3f").toString+" "+distance.unit) //ausgeben
+    textDistance.setText(distance.value.formatted("%.3f").toString + " " + distance.unit) //ausgeben
   }
-  
+
   private[this] var gps: GPS.Listener = null
 
   private[this] var time = 5000
-  
+
   val callback = { location: Option[Location] =>
     (location, lastLocation) match {
       //erster Messpunkt
@@ -45,14 +47,14 @@ class MeasureDistanceActivity extends ASimpleActivity {
       //folgende Messpunkte
       case (Some(now), Some(last)) =>
         //Entfernung zwischen beiden Koordinaten berechnen
-        val dist = last.to(now)
+        val dist = Math.abs(last to now)
         //Bewegung nur wenn über Schwellwert
         if (dist > 1.5) { //1.5 m
           lastLocation = location //Position merken
           distance += SIValue(dist, SIDistance.m) //aufaddieren
-          
+
           //wenn sich die Zeit verändert hat
-          if(time != gps.timing)
+          if (time != gps.timing)
             gps.timing = time
         }
       //Fehlermeldung von GPS.Listener
@@ -86,9 +88,9 @@ class MeasureDistanceActivity extends ASimpleActivity {
         lastLocation = None
       }
     }
-    
-    seekBar onChange { progress => 
-      time = (progress+10)*100
+
+    seekBar onChange { progress =>
+      time = (progress + 10) * 100
     }
   }
 

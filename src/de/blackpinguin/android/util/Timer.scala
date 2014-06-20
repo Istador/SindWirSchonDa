@@ -5,6 +5,7 @@ import android.app.Activity
 //Zeitmessung
 object Timer {
 
+  //Stringrepräsentation für Benutzer, und Wert + Einheit für SIValue-Objekte
   case class Timestamp(str: String, value: Double, unit: String)
 
   //Hilfsmethoden
@@ -15,8 +16,8 @@ object Timer {
   private[this] def st(in: String, n: Int): String =
     (for (i <- 0 until n - in.length) yield "0").mkString + in
 
-  //Auswerten einer Zeit
-  def analyze(time: Long): Timestamp = {
+  //Auswerten einer Zeit zu einem Timestamp
+  private[Timer] def analyze(time: Long): Timestamp = {
     //Berechnung einzelner Bestandteile
     var tmp = time
     val ms = tmp % 1000
@@ -38,8 +39,8 @@ object Timer {
 
 }
 
-class Timer(activity: Activity, callback: Long => Unit) {
-  
+class Timer(activity: Activity, callback: Timer.Timestamp => Unit) {
+
   private[this] var startTime: Long = 0
 
   private[this] var running = false
@@ -63,7 +64,7 @@ class Timer(activity: Activity, callback: Long => Unit) {
       t.start
     }
   }
-  
+
   def stop = if (running) {
     running = false
     update
@@ -73,7 +74,7 @@ class Timer(activity: Activity, callback: Long => Unit) {
     //Zeit berechnen
     val time = System.currentTimeMillis - startTime
     //Zeit über Callback zurückgeben
-    activity.runOnUiThread(new Runnable() { def run = callback(time) })
+    activity.runOnUiThread(new Runnable() { def run = callback(Timer.analyze(time)) })
   }
 
 }
