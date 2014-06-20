@@ -1,5 +1,6 @@
 package de.blackpinguin.android.util
 
+import android.os.SystemClock
 import android.location.Location
 
 //nur für dieses Package
@@ -24,7 +25,7 @@ private[util] abstract class GPSCommon extends GPS.Listener {
     //sofern vorhanden der Activity über den callback die letzte Position schicken
     for (c <- callback; tmp <- lastPos) { //wenn beides nicht null
       val pos = new Location(tmp) //kopie des Location-Objektes
-      pos.setElapsedRealtimeNanos(System.nanoTime) //um die Zeit zu ändern
+      pos.setElapsedRealtimeNanos(SystemClock.elapsedRealtimeNanos) //um die Zeit zu ändern
       c(Some(pos)) //callback aufrufen
     }
 
