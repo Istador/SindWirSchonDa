@@ -66,8 +66,11 @@ private[util] abstract class GPSCommon extends GPS.Listener {
 
   //Methode die von den Listener-Methoden der Subklassen aufgerufen werden soll
   protected[this] def onLocation(location: Location) =
-    for (loc <- Option(location); cb <- callback) {
+    for{
+      loc <- Option(location)
       lastPos = Some(loc)
+      cb <- callback
+    }{
       cb(lastPos)
     }
 

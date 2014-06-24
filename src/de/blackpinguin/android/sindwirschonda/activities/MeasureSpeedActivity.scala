@@ -42,13 +42,13 @@ class MeasureSpeedActivity extends ASimpleActivity {
 
   private[this] var time = 5000
 
-  def chartify(s: Double, t: Long = System.nanoTime) = chart + Point(t.toDouble, s)
+  def chartify(s: Double, t: Long) = chart + Point(t.toDouble, s)
 
   val callback = { location: Option[Location] =>
     (location, lastLocation) match {
       //erster Messpunkt
       case (Some(now), None) =>
-        chartify(0.0)
+        chartify(0.0, now.getElapsedRealtimeNanos)
         lastLocation = location
         speed = zero
       //folgende Messpunkte
