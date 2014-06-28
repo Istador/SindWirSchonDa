@@ -41,7 +41,6 @@ class SIValueInput(context: Context, attrs: AttributeSet) extends SIValueOutput(
   //Button "..." um Werte auszuwählen
   val button = grid.getChildAt(1).asInstanceOf[Button]
 
-  //import de.blackpinguin.android.sindwirschonda.activities.MainActivity
   //welche Actitity bei einem klick auf "..." geöffnet werden soll
   def selectActivity = unitType match {
     case SITime => classOf[SelectTimeActivity]

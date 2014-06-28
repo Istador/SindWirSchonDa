@@ -4,7 +4,6 @@ import android.content.Context
 
 //über dieses Objekt lassen sich Einheitentypen finden (z.B. Geschwindigkeit, Zeit, Entfernung)
 object SIUnitType {
-
   private[this] var cache = Map[String, SIUnitType[_]]()
   protected[SIUnitType] def +=(ut: SIUnitType[_]) = cache += ut.name -> ut
   def apply(name: String) = cache.getOrElse(name, null)
@@ -13,7 +12,7 @@ object SIUnitType {
 
 //Trait
 //für alle Einheitentypen, fügt sie automatisch dem Cache des Begleitobjektes hinzu
-trait SIUnitType[T] {
+trait SIUnitType[+T] {
 
   //füge konkrete Subklassen von SIUnitType in den Cache des Objektes 
   SIUnitType += this
@@ -46,7 +45,7 @@ trait SIUnitType[T] {
   def apply(abbr: String) = cache.getOrElse(abbr, SIUnit.NaU)
 
   //neue Einheit hinzufügen (nur für das package si aufrufbar)
-  protected[si] def +=(unit: SIUnit) = cache += unit.abbreviation -> unit
+  private[si] def +=(unit: SIUnit) = cache += unit.abbreviation -> unit
 
   private def res = Class.forName("android.app.ActivityThread").getMethod("currentApplication").invoke(null).asInstanceOf[Context].getResources
   lazy val name = res.getString(nameID)
