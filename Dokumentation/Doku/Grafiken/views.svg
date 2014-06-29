@@ -41,13 +41,13 @@
      showgrid="false"
      fit-margin-top="20"
      fit-margin-left="20"
-     fit-margin-right="20"
      fit-margin-bottom="20"
+     fit-margin-right="20"
      inkscape:zoom="0.42714932"
      inkscape:cx="458.125"
      inkscape:cy="296.25"
-     inkscape:window-x="204"
-     inkscape:window-y="47"
+     inkscape:window-x="161"
+     inkscape:window-y="21"
      inkscape:window-maximized="0"
      inkscape:current-layer="svg2" />
   <defs
@@ -837,7 +837,7 @@
     </g>
   </defs>
   <g
-     id="surface2540274"
+     id="surface14233"
      transform="translate(16,16)">
     <rect
        x="0"
@@ -3480,7 +3480,7 @@
        style="fill:#000000;fill-opacity:1"
        id="g1029">
       <use
-         xlink:href="#glyph0-32"
+         xlink:href="#glyph0-23"
          x="466"
          y="403"
          id="use1031"
@@ -3659,7 +3659,7 @@
        style="fill:#000000;fill-opacity:1"
        id="g1081">
       <use
-         xlink:href="#glyph0-32"
+         xlink:href="#glyph0-23"
          x="466"
          y="419"
          id="use1083"

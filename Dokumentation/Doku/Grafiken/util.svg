@@ -8,9 +8,9 @@
    xmlns:xlink="http://www.w3.org/1999/xlink"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   width="1267.5"
-   height="1217.5"
-   viewBox="0 0 1014 974"
+   width="1247.5"
+   height="1197.5"
+   viewBox="0 0 998 958"
    version="1.1"
    id="svg2"
    inkscape:version="0.48.4 r9939"
@@ -39,13 +39,13 @@
      inkscape:window-height="480"
      id="namedview2905"
      showgrid="false"
-     fit-margin-top="20"
-     fit-margin-left="20"
-     fit-margin-bottom="20"
-     fit-margin-right="20"
+     fit-margin-top="10"
+     fit-margin-left="10"
+     fit-margin-bottom="10"
+     fit-margin-right="10"
      inkscape:zoom="0.20063762"
-     inkscape:cx="633.125"
-     inkscape:cy="609.375"
+     inkscape:cx="623.125"
+     inkscape:cy="599.375"
      inkscape:window-x="201"
      inkscape:window-y="53"
      inkscape:window-maximized="0"
@@ -938,7 +938,7 @@
   </defs>
   <g
      id="surface13584"
-     transform="translate(16,16)">
+     transform="translate(8,8)">
     <rect
        x="0"
        y="0"
